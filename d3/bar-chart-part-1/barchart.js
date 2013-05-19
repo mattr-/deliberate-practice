@@ -33,3 +33,14 @@ chart.selectAll("text")
     .attr("dy", ".35em")
     .attr("text-anchor", "end")
     .text(String);
+
+chart.selectAll("line")
+  .data(x.ticks(10))
+  .enter().append("line")
+    .attr("x1", x)
+    .attr("x2", x)
+    .attr("y1", 0)
+    .attr("y2", 120)
+    .style("stroke", "#ccc");
+
+
