@@ -16,6 +16,14 @@ var y = d3.scale.ordinal()
   .domain(data)
   .rangeBands([0, 120]);
 
+chart.selectAll("line")
+  .data(x.ticks(10))
+  .enter().append("line")
+    .attr("x1", x)
+    .attr("x2", x)
+    .attr("y1", 0)
+    .attr("y2", 120)
+    .style("stroke", "#ccc");
 
 chart.selectAll("rect")
   .data(data)
@@ -34,13 +42,18 @@ chart.selectAll("text")
     .attr("text-anchor", "end")
     .text(String);
 
-chart.selectAll("line")
+chart.selectAll(".rule")
   .data(x.ticks(10))
-  .enter().append("line")
-    .attr("x1", x)
-    .attr("x2", x)
-    .attr("y1", 0)
-    .attr("y2", 120)
-    .style("stroke", "#ccc");
+  .enter().append("text")
+    .attr("class", "rule")
+    .attr("x", x)
+    .attr("y", 0)
+    .attr("dy", -3)
+    .attr("text-anchor", "middle")
+    .text(String);
 
 
+chart.append("line")
+  .attr("y1", 0)
+  .attr("y2", 120)
+  .style("stroke", "#000");
