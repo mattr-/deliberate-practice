@@ -1,0 +1,17 @@
+.chart rect {
+  fill: steelblue;
+  stroke: white;
+}
+
+.chart text {
+  font: 10px sans-serif;
+  stroke: white;
+  fill: white;
+}
+
+.chart .rule {
+  font: 10px sans-serif;
+  stroke: black;
+  fill: black;
+}
+
