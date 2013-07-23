@@ -1,9 +1,9 @@
 class Bob
   def hey(text)
-    return response = "Fine. Be that way." if nothing_said?(text)
+    return "Fine. Be that way." if silence?(text)
     response = "Whatever."
     response = "Woah, chill out!" if yelling?(text)
-    response = "Sure." if question?(text)
+    response = "Sure." if asking?(text)
     response
   end
 
@@ -12,11 +12,11 @@ class Bob
       text.upcase == text
     end
 
-    def question?(text)
+    def asking?(text)
       text.end_with?('?')
     end
 
-    def nothing_said?(text)
+    def silence?(text)
       text.nil? || (text && text.empty?)
     end
 end
