@@ -1,19 +1,24 @@
 class Bob
   def hey(text)
+    return response = "Fine. Be that way." if nothing_said?(text)
     response = "Whatever."
-    if text.nil? || (text && text.empty?)
-      return response = "Fine. Be that way."
-    end
-
-    if text.upcase == text
-      response = "Woah, chill out!"
-    end
-
-    if text.end_with?('?')
-      response = "Sure."
-    end
-
-
+    response = "Woah, chill out!" if yelling?(text)
+    response = "Sure." if question?(text)
     response
   end
+
+  private
+    def yelling?(text)
+      text.upcase == text
+    end
+
+    def question?(text)
+      text.end_with?('?')
+    end
+
+    def nothing_said?(text)
+      text.nil? || (text && text.empty?)
+    end
 end
+
+
