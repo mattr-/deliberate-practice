@@ -6,6 +6,7 @@ class Phrase
   end
 
   def word_count
+    counts = {}
     phrase.split(/[[:space:]]/).each do |word|
       increment_count(word)
     end
