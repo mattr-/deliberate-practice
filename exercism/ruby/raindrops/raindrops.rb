@@ -1,11 +1,11 @@
 class Raindrops
   def self.convert(input)
-    string = ""
-    string += "Pling" if factor_of_three?(input)
-    string += "Plang" if factor_of_five?(input)
-    string += "Plong" if factor_of_seven?(input)
-    string += input.to_s if string.empty?
-    string
+    String.new.tap do |output|
+      output << "Pling" if factor_of_three?(input)
+      output << "Plang" if factor_of_five?(input)
+      output << "Plong" if factor_of_seven?(input)
+      output << input.to_s if string.empty?
+    end
   end
 
   def self.factor_of_three?(input)
