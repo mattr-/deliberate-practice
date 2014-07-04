@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EEE809B7-BEC2-4DBE-8269-9D79CF16D4AB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>lottery</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F8D43681-D021-4DCB-940A-82D532F3E9E3</key>
+		<string>mattr:deliberate-practice</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>cocoa-programming-osx-fourth-edition/lottery/lottery.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F8D43681-D021-4DCB-940A-82D532F3E9E3</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>mattr:deliberate-practice</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F8D43681-D021-4DCB-940A-82D532F3E9E3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F8D43681-D021-4DCB-940A-82D532F3E9E3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>deliberate-practice</string>
+		</dict>
+	</array>
+</dict>
+</plist>
