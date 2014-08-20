@@ -7,9 +7,9 @@ class Hamming
     distance
   end
 
-  def self.individual_acids(first_strand, second_strand, &block)
-    first_strand.chars.each_with_index do |first_acid, position|
-      yield(first_acid, second_strand[position]) if block_given?
+  def self.individual_acids(first_strand, second_strand)
+    first_strand.chars.zip(second_strand.chars) do |first_acid, second_acid|
+      yield(first_acid, second_acid) if block_given?
     end
   end
 
