@@ -6,7 +6,8 @@
 var Bob = function() {};
 
 Bob.prototype.shouting = function(input) {
-  return input.toUpperCase() === input
+  var re = /[A-Za-z]+/;
+  return re.test(input) && input.toUpperCase() === input
 }
 
 Bob.prototype.asking = function(input) {
@@ -14,7 +15,7 @@ Bob.prototype.asking = function(input) {
 }
 
 Bob.prototype.nothing_said = function(input) {
-  return input === "";
+  return input.trim() === "";
 }
 
 Bob.prototype.hey = function(input) {
@@ -22,7 +23,7 @@ Bob.prototype.hey = function(input) {
     return "Fine. Be that way!";
   }
   if (this.shouting(input)) {
-    return "Woah, chill out!";
+    return "Whoa, chill out!";
   }
   if (this.asking(input)) {
     return "Sure.";
