@@ -1,11 +1,7 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package twofer should have a package comment that summarizes what it's about.
-// https://golang.org/doc/effective_go.html#commentary
+// This is the exercism exercise 'Two Fer' on the go track
 package twofer
 
-// ShareWith should have a comment documenting it.
+// Share a thing with another human and return how you're going to share it.
 func ShareWith(name string) string {
 	if len(name) == 0 {
 		return "One for you, one for me."
