@@ -1,36 +1,21 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+set -euo pipefail
 
 : "${GEM_HOST_API_KEY}"
 : "${PUSH_HOST}"
 
-OPTIONS=$(getopt -o "g:" --long "gem:" -- "$@")
-
-if [ $? -ne 0 ]; then
-  echo "Failed to parse options." >&2
-  exit 1
-fi
-
-eval set -- "$OPTIONS"
-GEM=""
-
-while true; do
-  case "$1" in
-    -g|--gem)
-      GEM=$2
-      shift 2
-      ;;
-    --)
-      shift
-      break
-      ;;
-    *)
-      echo "Invalid option specified: $1" >&2
-      exit 1
-      ;;
+while getopts "g:" opt; do
+  case $opt in
+    g) GEM="$OPTARG" ;;
   esac
 done
+
+shift $((OPTIND-1))
+
+if [ -z "$GEM" ]; then
+  echo "Error: gem to build not specified"
+fi
 
 if [ ! -f $HOME/.gem/credentials ]; then
   mkdir -p $HOME/.gem

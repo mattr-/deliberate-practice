@@ -2,32 +2,17 @@
 
 set -eo pipefail
 
-OPTIONS=$(getopt -o "g:" --long "gem:" -- "$@")
-
-if [ $? -ne 0 ]; then
-  echo "Failed to parse options." >&2
-  exit 1
-fi
-
-eval set -- "$OPTIONS"
-GEM=""
-
-while true; do
-  case "$1" in
-    -g|--gem)
-      GEM=$2
-      shift 2
-      ;;
-    --)
-      shift
-      break
-      ;;
-    *)
-      echo "Invalid option specified: $1" >&2
-      exit 1
-      ;;
+while getopts "g:" opt; do
+  case $opt in
+    g) GEM="$OPTARG" ;;
   esac
 done
+
+shift $((OPTIND-1))
+
+if [ -z "$GEM" ]; then
+  echo "Error: gem to build not specified"
+fi
 
 echo "Building gem: $GEM"
 pushd "gems/$GEM" &>/dev/null
