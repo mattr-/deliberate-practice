@@ -1,4 +1,6 @@
-require "toy2/version"
+# frozen_string_literal: true
+
+require_relative "toy2/version"
 
 module Toy2
   class Error < StandardError; end

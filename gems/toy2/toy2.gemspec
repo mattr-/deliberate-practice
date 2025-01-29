@@ -1,43 +1,41 @@
+# frozen_string_literal: true
 
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "toy2/version"
+require_relative "lib/toy2/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "toy2"
-  spec.version       = Toy2::VERSION
-  spec.authors       = ["Matt Rogers"]
-  spec.email         = ["codemattr@gmail.com"]
+  spec.name = "toy2"
+  spec.version = Toy2::VERSION
+  spec.authors = ["Matt Rogers"]
+  spec.email = ["codemattr@gmail.com"]
 
-  spec.summary       = %q{A useless toy gem to test other functionality}
-  spec.description   = %q{This is my super long description for this toy gem that I'm making to test a thing.}
-  spec.homepage      = "https://github.com/mattr-/toy-gems"
-  spec.license       = "MIT"
+  spec.summary = %q{A useless toy gem to test other functionality}
+  spec.description = %q{This is my super long description for this toy gem that I'm making to test a thing.}
+  spec.homepage = "https://github.com/mattr-/toy-gems"
+  spec.license = "MIT"
+  spec.required_ruby_version = ">= 3.4.0"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "https://rubygems.pkgs.github.com/mattr-"
-
-    spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/mattr-/toy-gems"
-    spec.metadata["changelog_uri"] = "https://github.com/mattr-/toy-gems/gems/toy2/CHANGELOG.md"
-    spec.metadata["github_repo"] = "https://github.com/mattr-/toy-gems"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
+  spec.metadata["allowed_push_host"] = "https://rubygems.pkgs.github.com/mattr-"
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/mattr-/toy-gems"
+  spec.metadata["changelog_uri"] = "https://github.com/mattr-/toy-gems/gems/toy2/CHANGELOG.md"
+  spec.metadata["github_repo"] = "https://github.com/mattr-/toy-gems"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  gemspec = File.basename(__FILE__)
+  spec.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
+    ls.readlines("\x0", chomp: true).reject do |f|
+      (f == gemspec) ||
+        f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
+    end
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir = "exe"
+  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.17"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
+  # Uncomment to register a new dependency of your gem
+  # spec.add_dependency "example-gem", "~> 1.0"
+
+  # For more information and examples about making a new gem, check out our
+  # guide at: https://bundler.io/guides/creating_gem.html
 end
