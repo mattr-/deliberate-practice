@@ -1,0 +1,54 @@
+name: "Release Please"
+
+on:
+  push:
+    branches:
+      - release-please-test-main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    name: Release Management
+    outputs:
+      release_metadata: ${{ steps.release.outputs }}
+    steps:
+      - name: Update Release PR
+        id: release
+        uses: googleapis/release-please-action@7987652d64b4581673a76e33ad5e98e3dd56832f
+        with:
+          config-file: release-please-config.json
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  gem-build-and-release:
+    runs-on: ubuntu-latest
+    name: Build and Publish Gems
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_metadata.releases_created }}
+    strategy:
+      matrix:
+        gem_name: [toy1, toy2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        if: needs.release-please.output['${{matrix.gem_name}}--release_created']
+
+      - name: Set Up Ruby
+        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+        with:
+          ruby-version: 3.4
+          bundle-cache: true
+        if: needs.release-please.output['${{matrix.gem_name}}--release_created']
+
+      - name: Publish to GPR
+        run: script/build-gem -g ${{ matrix.gem_name }} && script/gpr-push -g ${{ matrix.gem_name }}
+        env:
+          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
+          PUSH_HOST: "https://rubygems.pkg.github.com/${{ github.repository_owner }}"
+          BUNDLE_RUBYGEMS__PKG__GITHUB__COM: "${{ secrets.GITHUB_USER }}:${{ secrets.GITHUB_TOKEN }}"
+        if: needs.release-please.output['${{matrix.gem_name}}--release_created']
