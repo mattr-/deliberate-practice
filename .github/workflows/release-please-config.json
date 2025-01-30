@@ -1,5 +1,5 @@
 {
-  "release-type": "ruby",
+  "separate-pull-requests": true,
   "packages": {
     "gems/toy1": {
       "release-type": "ruby",
