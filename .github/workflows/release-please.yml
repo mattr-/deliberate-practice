@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Release Management
     outputs:
-      release_metadata: ${{ steps.release.outputs }}
+      release_metadata: ${{ toJSON(steps.release.outputs) }}
     steps:
       - name: Update Release PR
         id: release
@@ -31,26 +31,26 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Publish Gems
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_metadata.releases_created }}
+    if: ${{ fromJSON(needs.release-please.outputs.release_metadata).releases_created }}
     strategy:
       matrix:
-        gem_name: [toy1, toy2]
+        gem_path: ["gems/toy1", "gems/toy2"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        if: needs.release-please.output['${{matrix.gem_name}}--release_created']
+        if: ${{ fromJSON(needs.release-please.outputs.release_metadata)['${{matrix.gem_path}}--release_created'] }}
 
       - name: Set Up Ruby
         uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
         with:
           ruby-version: 3.4
           bundle-cache: true
-        if: needs.release-please.output['${{matrix.gem_name}}--release_created']
+        if: ${{ fromJSON(needs.release-please.outputs.release_metadata)['${{matrix.gem_path}}--release_created'] }}
 
       - name: Publish to GPR
-        run: script/build-gem -g ${{ matrix.gem_name }} && script/gpr-push -g ${{ matrix.gem_name }}
+        run: script/build-gem -g ${{ matrix.gem_path }} && script/gpr-push -g ${{ matrix.gem_path }}
         env:
           GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
           PUSH_HOST: "https://rubygems.pkg.github.com/${{ github.repository_owner }}"
           BUNDLE_RUBYGEMS__PKG__GITHUB__COM: "${{ secrets.GITHUB_USER }}:${{ secrets.GITHUB_TOKEN }}"
-        if: needs.release-please.output['${{matrix.gem_name}}--release_created']
+        if: ${{ fromJSON(needs.release-please.outputs.release_metadata)['${{matrix.gem_path}}--release_created'] }}
