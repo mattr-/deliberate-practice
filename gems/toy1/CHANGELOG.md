@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+## [0.3.0](https://github.com/mattr-/deliberate-practice/compare/toy1/v0.2.0...toy1/v0.3.0) (2025-01-30)
+
+
+### Features
+
+* **toy1:** add a second feature ([2401112](https://github.com/mattr-/deliberate-practice/commit/2401112cbc674033e353014af844cd5baf8981a7))
+
 ## [0.2.0](https://github.com/mattr-/deliberate-practice/compare/toy1-v0.1.0...toy1/v0.2.0) (2025-01-30)
 
 
