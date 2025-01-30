@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.4.0"
 
-  spec.metadata["allowed_push_host"] = "https://rubygems.pkgs.github.com/mattr-"
+  spec.metadata["allowed_push_host"] = "https://rubygems.pkg.github.com/mattr-"
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/mattr-/toy-gems"
   spec.metadata["changelog_uri"] = "https://github.com/mattr-/toy-gems/gems/toy2/CHANGELOG.md"
