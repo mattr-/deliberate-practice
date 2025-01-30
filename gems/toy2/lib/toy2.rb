@@ -9,4 +9,6 @@ module Toy2
   def a_bug_fix
     puts "fixed!"
   end
+
+  #another bug fix is here
 end
