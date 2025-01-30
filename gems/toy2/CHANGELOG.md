@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+## [0.2.2](https://github.com/mattr-/deliberate-practice/compare/toy2/v0.2.1...toy2/v0.2.2) (2025-01-30)
+
+
+### Bug Fixes
+
+* **toy2:** squash another bug ([21c81e9](https://github.com/mattr-/deliberate-practice/commit/21c81e9b3e445f083778f7b6f9d74689aa47c1fb))
+
 ## [0.2.1](https://github.com/mattr-/deliberate-practice/compare/toy2/v0.2.0...toy2/v0.2.1) (2025-01-30)
 
 
