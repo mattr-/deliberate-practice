@@ -1,6 +1,5 @@
 {
   "release-type": "ruby",
-  "bootstrap-sha": "1b2d824f8a7b50deaff9732be3e50bc47360b72c",
   "packages": {
     "gems/toy1": {
       "release-type": "ruby",
