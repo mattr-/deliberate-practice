@@ -14,8 +14,8 @@ if [ -z "$GEM" ]; then
   echo "Error: gem to build not specified"
 fi
 
-echo "Building gem: $GEM"
-pushd "gems/$GEM" &>/dev/null
+echo "Building gem: $(basename $GEM)"
+pushd "$GEM" &>/dev/null
 bundle install
 bundle exec rake build
 popd &>/dev/null

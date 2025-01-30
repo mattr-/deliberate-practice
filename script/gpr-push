@@ -24,8 +24,8 @@ if [ ! -f $HOME/.gem/credentials ]; then
   printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
 fi
 
-echo "Pushing gem: $GEM"
-pushd "gems/$GEM" &>/dev/null
+echo "Pushing gem: $(basename $GEM)"
+pushd "$GEM" &>/dev/null
 gem push --key github --host $PUSH_HOST pkg/*.gem
 popd &>/dev/null
 done
