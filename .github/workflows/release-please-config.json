@@ -1,0 +1,20 @@
+{
+  "release-type": "ruby",
+  "bootstrap-sha": "1b2d824f8a7b50deaff9732be3e50bc47360b72c",
+  "packages": {
+    "gems/toy1": {
+      "release-type": "ruby",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "package-name": "toy1",
+      "version-file": "gems/toy1/lib/toy1/version.rb"
+    },
+    "gems/toy2": {
+      "release-type": "ruby",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "package-name": "toy2",
+      "version-file": "gems/toy2/lib/toy2/version.rb"
+    }
+  }
+}
