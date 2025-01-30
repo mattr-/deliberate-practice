@@ -22,8 +22,9 @@ jobs:
         id: release
         uses: googleapis/release-please-action@7987652d64b4581673a76e33ad5e98e3dd56832f
         with:
-          config-file: release-please-config.json
-          token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: .github/workflows/release-please-config.json
+          config-file: .github/workflows/release-please-manifest.json
+          token: ${{ secrets.FGP_TOKEN }}
 
   gem-build-and-release:
     runs-on: ubuntu-latest
