@@ -9,4 +9,8 @@ module Toy1
   def fancy_new_feature_method
     puts "I do some work!"
   end
+
+  def another_new_feature
+    puts "I do even more work!"
+  end
 end
