@@ -31,7 +31,7 @@ jobs:
     name: Release Please Output Debugging
     needs: release-please
     steps:
-      - run: echo ${{ needs.release-please.outputs.release_metadata }} | jq .
+      - run: echo '${{ needs.release-please.outputs.release_metadata }}'
 
   gem-build-and-release:
     runs-on: ubuntu-latest
