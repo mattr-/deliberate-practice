@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+## [0.3.1](https://github.com/mattr-/deliberate-practice/compare/toy1/v0.3.0...toy1/v0.3.1) (2025-01-30)
+
+
+### Bug Fixes
+
+* **toy1:** use correct hostname in gemspec ([22a915c](https://github.com/mattr-/deliberate-practice/commit/22a915c6e20c2a118c8cc43186392e18beff0698))
+
 ## [0.3.0](https://github.com/mattr-/deliberate-practice/compare/toy1/v0.2.0...toy1/v0.3.0) (2025-01-30)
 
 
