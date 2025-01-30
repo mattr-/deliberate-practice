@@ -28,4 +28,3 @@ echo "Pushing gem: $(basename $GEM)"
 pushd "$GEM" &>/dev/null
 gem push --key github --host $PUSH_HOST pkg/*.gem
 popd &>/dev/null
-done
